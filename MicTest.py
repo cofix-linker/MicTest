@@ -10,7 +10,7 @@ q = queue.Queue()
 model = Model('model_small')
 
 device = sd.default.device
-samplerate = int(sd.query_devices(device[0], 'input')['default_samplerate'])
+samplerate = int(sd.query_devices(device[2], 'input')['default_samplerate'])
 
 def callback(indata, frames, time, status):
     q.put(bytes(indata))
@@ -32,7 +32,7 @@ def main():
     clf.fit(vectors, list(words.data_set.values()))
 
     del words.data_set
-    print('Попроси телефончик что-то сделать')
+    speaker('Попроси телефончик что-то сделать')
     with sd.RawInputStream(samplerate=samplerate, blocksize = 48000, device=device[0],
             dtype="int16", channels=1, callback=callback):
 
