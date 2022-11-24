@@ -32,7 +32,7 @@ def main():
     clf.fit(vectors, list(words.data_set.values()))
 
     del words.data_set
-    speaker(f"Привет, я {list(words.TRIGGERS)[0]}")
+    speaker(f"Привет, я {list(words.TRIGGERS)[1]}")
     with sd.RawInputStream(samplerate=samplerate, blocksize = 48000, device=device[0],
             dtype="int16", channels=1, callback=callback):
 
